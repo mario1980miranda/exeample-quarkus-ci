@@ -35,8 +35,8 @@ jobs:
               F_NAME: "Mario"
               L_NAME: "Miranda"
               
-    - name: List current folder
-      run : ls -la
+#    - name: List current folder
+#      run : ls -la
       
     - name: Print value of Global Environment Variable
       run : echo ${{ env.MY_APP_NAME }}
