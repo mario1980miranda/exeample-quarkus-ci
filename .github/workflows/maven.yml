@@ -26,6 +26,7 @@ jobs:
       
     - name: Execute a few commands
       run : |
+        echo "Trying more than one command at the same time" |
         echo "Hello : $F_NAME $L_NAME this is local environment variables to this step"
       env : 
               F_NAME: "Mario"
