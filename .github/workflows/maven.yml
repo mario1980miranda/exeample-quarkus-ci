@@ -46,3 +46,6 @@ jobs:
       
     - name: Test aws cli installation
       run : aws --version
+      
+    - name: Compile quarkus
+      run : ./mvnw compile quarkus:build
