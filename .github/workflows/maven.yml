@@ -49,3 +49,6 @@ jobs:
       
     - name: Compile quarkus
       run : mvn compile quarkus:build
+      
+    - name: Trying to recover secret from Github
+      run : echo $CA_AWS
