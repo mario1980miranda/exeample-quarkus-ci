@@ -51,4 +51,4 @@ jobs:
       run : mvn compile quarkus:build
       
     - name: Trying to recover secret from Github
-      run : echo $CA_AWS
+      run : echo ${{ secrets.CA_AWS }}
