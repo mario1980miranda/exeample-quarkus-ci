@@ -1,0 +1,48 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: Java CI with Maven
+env:
+    MY_APP_NAME: "Test CI chez AWS"
+    MY_ENV_NAME: "Production"
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  my_testing:
+    runs-on: ubuntu-latest
+    env:
+      VAR_1: "Variable 1 on job level"
+      VAR_2: "Variable 2 on job level"
+      
+    steps:
+    - name: Git clone our repo
+      uses: actions/checkout@v1
+    
+    - name: Execute one command
+      run : echo Hello, world !
+      
+    - name: Execute a few commands
+      run : |
+        echo "Hello world"
+        echo "We are going to deploy my repo to remote AWS server
+        echo "It's not so hard as you think"
+        echo "Let's see what do we have here in current folder..."
+        echo "Hello : $F_NAME $L_NAME this is local environment variables to this step"
+      env : 
+              F_NAME: "Mario"
+              L_NAME: "Miranda"
+              
+    - name: List current folder
+      run : ls -la
+      
+    - name: Print value of Global Environment Variable
+      run : echo ${{ env.MY_APP_NAME }}
+
+    - name: Print value of a JOB level environment variable
+      run : echo ${{ env.VAR_2 }}
+      
+    - name: Test aws cli installation
+      run : aws --version
