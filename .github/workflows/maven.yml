@@ -26,7 +26,10 @@ jobs:
       
     - name: Execute a few commands
       run : |
-        echo "Trying more than one command at the same time"
+        echo "Hello world"
+        echo "We are going to deploy my repo to remote AWS server"
+        echo "It's not so hard as you think"
+        echo "Let's see what do we have here in current folder..."
         echo "Hello : $F_NAME $L_NAME this is local environment variables to this step"
       env : 
               F_NAME: "Mario"
