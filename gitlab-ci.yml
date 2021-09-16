@@ -1,0 +1,14 @@
+quarkus:deployProduction:
+  image: oracle/graalvm-ce
+  stage: deploy
+  environment: live
+  script:
+    - ./mvnw compile quarkus:build
+    - gu install native-image
+    - yum -y install openssh-clients
+#    - ./mvnw package -Pnative
+    - chmod 400 $CA_AWS
+    - scp -r StrictHostKeyChecking=no -i$CA_AWS ./target/curso.projeto-dev.jar ubuntu@ec2-3-96-66-189.ca-central-1.compute.amazonaws.com:/home/ubuntu/
+    - ssh -o StrictHostKeyChecking=no -i$CA_AWS ubuntu@ec2-3-96-66-189.ca-central-1.compute.amazonaws.com './subir.sh | exit'
+  only:
+    - master
