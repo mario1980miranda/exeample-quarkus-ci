@@ -48,4 +48,4 @@ jobs:
       run : aws --version
       
     - name: Compile quarkus
-      run : ./mvnw compile quarkus:build
+      run : mvn compile quarkus:build
